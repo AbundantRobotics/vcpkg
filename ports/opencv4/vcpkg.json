@@ -216,6 +216,9 @@
     },
     "world": {
       "description": "Compile to a single package support for opencv"
+    },
+    "gtk": {
+      "description": "gtk support for opencv"
     }
   }
 }
