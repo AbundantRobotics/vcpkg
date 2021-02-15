@@ -1,0 +1,39 @@
+include(vcpkg_common_functions)
+
+#vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
+
+vcpkg_from_bitbucket(
+    OUT_SOURCE_PATH SOURCE_PATH
+    REPO wolfpld/tracy.git
+    REF v0.7.4
+    SHA512 657fecbd07330965c3665bde04bb7a3c80588412b33deae296f1075f480a038f6982c61e8a3eaadfc8cdd8579063f9ebbcc22dc98ba5b7a6f57d69dd83fa5f1c
+    HEAD_REF master
+)
+
+file(COPY ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt DESTINATION ${SOURCE_PATH})
+
+vcpkg_configure_cmake(
+    SOURCE_PATH ${SOURCE_PATH}
+    OPTIONS_DEBUG
+        -DTRACY_SKIP_HEADERS=ON
+)
+
+vcpkg_install_cmake()
+
+vcpkg_copy_pdbs()
+vcpkg_fixup_cmake_targets()
+
+
+set(TRACY_TOOL_PATH ${CURRENT_PACKAGES_DIR}/tools/${PORT})
+file(MAKE_DIRECTORY ${TRACY_TOOL_PATH})
+
+file(GLOB TRACY_TOOLS ${CURRENT_PACKAGES_DIR}/bin/*${VCPKG_TARGET_EXECUTABLE_SUFFIX})
+file(COPY ${TRACY_TOOLS} DESTINATION ${TRACY_TOOL_PATH})
+file(REMOVE_RECURSE ${TRACY_TOOLS})
+
+file(GLOB TRACY_TOOLS_DBG ${CURRENT_PACKAGES_DIR}/debug/bin/*${VCPKG_TARGET_EXECUTABLE_SUFFIX})
+file(REMOVE_RECURSE ${TRACY_TOOLS_DBG})
+
+file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/bin ${CURRENT_PACKAGES_DIR}/debug/bin)
+
+configure_file(${SOURCE_PATH}/LICENSE ${CURRENT_PACKAGES_DIR}/share/tracy/copyright COPYONLY)
