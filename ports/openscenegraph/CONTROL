@@ -1,0 +1,4 @@
+Source: openscenegraph
+Version: 3.6.4
+Description:  The OpenSceneGraph is an open source high performance 3D graphics toolkit.
+Build-Depends: freetype, jasper, openexr, zlib, giflib, libjpeg-turbo, libpng, tiff
