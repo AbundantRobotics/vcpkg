@@ -8,6 +8,8 @@ vcpkg_from_github(
     REF v0.7.6
     SHA512 0f4e143e5b845e6077b0b77c446dfdf80778c73f710544f1ed802778e93c4ab317a314fbe9ac635754782b1f6ec80140cd4af2347bc434e256f07b685942bfd6
     HEAD_REF master
+    PATCHES
+        capstone.patch
 )
 
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt DESTINATION ${SOURCE_PATH})
