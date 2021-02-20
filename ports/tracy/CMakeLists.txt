@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 project(tracy CXX C)
 
-set(CMAKE_DEBUG_POSTFIX d)
-
 set ( SOURCE_FILES 
   TracyClient.cpp
 )
@@ -80,6 +78,7 @@ set (
   imgui/imgui.cpp
   imgui/imgui_demo.cpp
   imgui/imgui_draw.cpp
+  imgui/imgui_tables.cpp
   imgui/imgui_widgets.cpp
   nfd/nfd_common.c
   server/TracyBadVersion.cpp
@@ -295,7 +294,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE unofficial::gl3w::gl3w)
 
 if (WIN32)
   target_link_libraries(${TARGET_NAME} PRIVATE ws2_32.lib opengl32.lib)
-  target_link_libraries(${TARGET_NAME} PRIVATE debug E:/vcpkg-odin/installed/x64-windows/debug/lib/capstone_dll.lib optimized E:/vcpkg-odin/installed/x64-windows/lib/capstone_dll.lib)
+  target_link_libraries(${TARGET_NAME} PRIVATE debug E:/vcpkg/installed/x64-windows/debug/lib/capstone_dll.lib optimized E:/vcpkg/installed/x64-windows/lib/capstone_dll.lib)
 else ()
   find_package(GTK2 REQUIRED gtk)
 

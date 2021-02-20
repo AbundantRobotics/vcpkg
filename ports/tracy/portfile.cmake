@@ -2,11 +2,11 @@ include(vcpkg_common_functions)
 
 #vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
-vcpkg_from_bitbucket(
+vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO wolfpld/tracy.git
-    REF v0.7.4
-    SHA512 657fecbd07330965c3665bde04bb7a3c80588412b33deae296f1075f480a038f6982c61e8a3eaadfc8cdd8579063f9ebbcc22dc98ba5b7a6f57d69dd83fa5f1c
+    REPO wolfpld/tracy
+    REF v0.7.6
+    SHA512 0f4e143e5b845e6077b0b77c446dfdf80778c73f710544f1ed802778e93c4ab317a314fbe9ac635754782b1f6ec80140cd4af2347bc434e256f07b685942bfd6
     HEAD_REF master
 )
 
